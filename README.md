@@ -1,33 +1,22 @@
-# 🌲 Forest Fire Prediction using Machine Learning
+# 🌲 Forest Cover Type Prediction using Machine Learning
 
 ## 📌 Project Overview
 
-Forest fires are one of the most serious environmental disasters, causing damage to ecosystems, wildlife, and human settlements. Early prediction of forest fires can help authorities take preventive measures and reduce the damage.
+This project applies **Machine Learning techniques to predict forest cover types** using environmental data.
+The goal is to analyze geographical and environmental features and build a model that predicts the **type of forest cover** present in a specific area.
 
-This project uses **Machine Learning techniques** to analyze environmental data and predict the likelihood of forest fires based on various environmental factors.
-
-The project was developed as part of an **Edunet Foundation learning program** to understand how data science and machine learning can be applied to solve real-world environmental problems.
-
----
-
-## 🎯 Objective
-
-The main objectives of this project are:
-
-* Analyze environmental data related to forest conditions
-* Understand the relationship between different environmental variables
-* Build a machine learning model that predicts forest fire occurrence
-* Visualize patterns and insights from the dataset
+The project demonstrates how **data preprocessing, feature scaling, model training, and evaluation** are used in a real-world machine learning workflow.
 
 ---
 
-## 🧠 Machine Learning Concepts Used
+## 🎯 Project Objectives
 
-* Data Preprocessing
-* Exploratory Data Analysis (EDA)
-* Feature Selection
-* Regression / Classification Modeling
-* Model Evaluation
+* Load and analyze a forest dataset
+* Perform **data exploration and preprocessing**
+* Split the dataset into training and testing data
+* Train a **Machine Learning model**
+* Evaluate the model using regression metrics
+* Visualize the distribution of forest cover types
 
 ---
 
@@ -38,7 +27,7 @@ The main objectives of this project are:
 * NumPy
 * Matplotlib
 * Seaborn
-* Scikit-Learn
+* Scikit-learn
 * Jupyter Notebook
 
 ---
@@ -46,42 +35,60 @@ The main objectives of this project are:
 ## 📂 Project Structure
 
 ```
-Edunet-Project/
+Edunet-Project
 │
-├── Forest_Fire_Prediction.ipynb   # Main ML notebook
-├── README.md                      # Project documentation
-└── requirements.txt               # Required Python libraries
+├── Forest_Fire_Prediction.ipynb
+├── README.md
+└── requirements.txt
 ```
+
+### File Description
+
+**Forest_Fire_Prediction.ipynb**
+
+Main notebook containing:
+
+* Data loading
+* Data preprocessing
+* Feature scaling
+* Model training
+* Model evaluation
+* Visualization
 
 ---
 
-## ⚙ How to Run the Project
+## ⚙ Installation
 
-### 1️⃣ Clone the repository
+Clone the repository:
 
 ```
 git clone https://github.com/palrithika29/Edunet-Project.git
 ```
 
-### 2️⃣ Navigate to the project folder
+Move into the project directory:
 
 ```
 cd Edunet-Project
 ```
 
-### 3️⃣ Install required libraries
+Install required libraries:
 
 ```
 pip install -r requirements.txt
 ```
 
-### 4️⃣ Open the notebook
+---
+
+## ▶ How to Run the Project
+
+1. Install the required libraries.
+2. Open Jupyter Notebook.
 
 ```
 jupyter notebook
 ```
 
-Then run:
+3. Run the notebook:
 
 ```
 Forest_Fire_Prediction.ipynb
@@ -89,32 +96,137 @@ Forest_Fire_Prediction.ipynb
 
 ---
 
-## 📊 Project Workflow
+## 🔬 Machine Learning Workflow
 
-1. Importing necessary libraries
-2. Loading the dataset
-3. Data cleaning and preprocessing
-4. Exploratory Data Analysis (EDA)
-5. Feature selection
-6. Training the machine learning model
-7. Evaluating model performance
-8. Visualizing results
+### 1️⃣ Data Loading
+
+The dataset is loaded using Pandas:
+
+```python
+df = pd.read_csv("dataset.csv")
+```
 
 ---
 
-## 📈 Key Insights
+### 2️⃣ Data Exploration
 
-* Environmental factors such as **temperature, humidity, wind speed, and rainfall** influence forest fire occurrences.
-* Machine learning models can help **identify patterns and predict potential fire risks**.
-* Data visualization helps in understanding **relationships between environmental variables**.
+The dataset is explored using:
+
+* `df.head()`
+* `df.info()`
+* `df.describe()`
+* Missing value checks
+
+---
+
+### 3️⃣ Data Visualization
+
+A histogram is created to visualize the distribution of **forest cover types**.
+
+```python
+sns.histplot(df["Cover_Type"])
+```
+
+---
+
+### 4️⃣ Feature Selection
+
+The **Aspect column is removed** as it is not required for prediction.
+
+```python
+df.drop(columns=["Aspect"], inplace=True)
+```
+
+---
+
+### 5️⃣ Feature and Target Variables
+
+The dataset is divided into:
+
+* **X (Features)** – Environmental variables
+* **Y (Target)** – Forest cover type
+
+```python
+x = df.drop(columns=["Cover_Type"])
+y = df["Cover_Type"]
+```
+
+---
+
+### 6️⃣ Train-Test Split
+
+The dataset is split into:
+
+* **80% training data**
+* **20% testing data**
+
+```python
+train_test_split(test_size=0.2, random_state=42)
+```
+
+---
+
+### 7️⃣ Feature Scaling
+
+Standardization is applied using **StandardScaler** to improve model performance.
+
+```python
+StandardScaler()
+```
+
+---
+
+### 8️⃣ Model Training
+
+A **Linear Regression model** is trained using the scaled training data.
+
+```python
+model = LinearRegression()
+model.fit(xtrain, ytrain)
+```
+
+---
+
+### 9️⃣ Model Prediction
+
+Predictions are made on the test dataset.
+
+```python
+ypred = model.predict(xtest)
+```
+
+---
+
+### 🔟 Model Evaluation
+
+The model is evaluated using the following metrics:
+
+* **Mean Absolute Error (MAE)**
+* **Mean Squared Error (MSE)**
+* **R² Score**
+
+Results obtained:
+
+```
+Mean Absolute Error: 0.7225
+Mean Squared Error: 1.3258
+R-squared Score: 0.3172
+```
+
+These metrics help measure how accurately the model predicts forest cover types.
+
+---
+
+## 📊 Visualization
+
+The project includes graphical visualization using **Matplotlib and Seaborn** to understand the distribution of forest cover types in the dataset.
 
 ---
 
 ## 👩‍💻 Contributors
 
 Rithika Ramashankar Pal
-Anchal Yadav
-Zubaida Qureshi
+Anchal Kamlesh Yadav
 
 ---
 
@@ -122,18 +234,23 @@ Zubaida Qureshi
 
 Through this project we learned:
 
-* Applying machine learning to environmental datasets
-* Performing exploratory data analysis
-* Building predictive models using Scikit-Learn
-* Visualizing data for better understanding
-* Working with Jupyter Notebook and GitHub for project sharing
+* Data preprocessing using Pandas
+* Data visualization using Seaborn and Matplotlib
+* Feature scaling using StandardScaler
+* Machine learning model training using Scikit-learn
+* Model evaluation using regression metrics
 
 ---
 
-## 🔗 GitHub Repository
+## 🚀 Future Improvements
 
-https://github.com/palrithika29/Edunet-Project
+Possible improvements for this project include:
+
+* Using **classification models instead of regression**
+* Applying **Random Forest or Decision Tree models**
+* Improving model accuracy through **feature engineering**
+* Creating a **web interface for predictions**
 
 ---
 
-⭐ This project demonstrates how **Machine Learning can assist in predicting environmental risks such as forest fires**, enabling better disaster preparedness and prevention.
+⭐ This project demonstrates the application of **machine learning techniques to environmental data analysis and prediction.**
