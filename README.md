@@ -225,8 +225,8 @@ The project includes graphical visualization using **Matplotlib and Seaborn** to
 
 ## 👩‍💻 Contributors
 
-Rithika Ramashankar Pal
-Anchal Kamlesh Yadav
+-**Rithika Ramashankar Pal**
+-**Anchal Kamlesh Yadav**
 
 ---
 
